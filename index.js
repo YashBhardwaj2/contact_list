@@ -12,25 +12,36 @@ app.set('views',path.join(__dirname,"views"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('assets'));
 
-var contactList = [
-    {
-        name: 'Yash Bhardwaj',
-        phone: "7011808879"
-    },
-    {
-        name: "Pallav jain",
-        phone: "9873013365"
-    },
-    {
-        name: "Papa",
-        phone: "8860406090"
-    }
-];
+// var contactList = [
+//     {
+//         name: 'Yash Bhardwaj',
+//         phone: "7011808879"
+//     },
+//     {
+//         name: "Pallav jain",
+//         phone: "9873013365"
+//     },
+//     {
+//         name: "Papa",
+//         phone: "8860406090"
+//     }
+// ];
 
 app.get('/',function(req, res){
-    return res.render('home',{
-        title:"I am Flying",
-        contact_list: contactList
+    // return res.render('home',{
+    //     title:"I am Flying",
+    //     contact_list: contactList
+    // });
+    //fetching from db
+    Contact.find({},function(err,contacts/*all the contacts which we have find*/){
+        if(err){
+            console.log('Error in fetching Contacts');
+            return;
+        }
+        return res.render('home',{
+            title:"Contact List",
+            contact_list: contacts
+        });
     });
 });
 
