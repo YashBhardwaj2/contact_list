@@ -39,6 +39,20 @@ app.post('/create_contact',function(req,res){
     contactList.push(req.body);
     return res.redirect('back');
 });
+//deleting contact using string param
+app.get('/delete-contact/:phone',function(req,res){
+    let phone = req.params.phone;
+    let i=0;
+    for(let p of contactList){
+        i++;
+        if(p.phone==phone){
+            break;
+        }
+    }
+    console.log(i);
+    contactList.splice(i-1,1);
+    return res.redirect('back');
+})
 
 app.listen(port,function(err){
     if(err){

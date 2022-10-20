@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home.css">
+    <script src="https://kit.fontawesome.com/4ad0a755f5.js" crossorigin="anonymous"></script>
     <title><%= title%></title>
 </head>
 <body>
-    <h1>Contact List</h1>
+    <h1><span class="fas fa-address-book"></span> Contact List</h1>
     <div id="contact_list_block">
         <ul id="contact_list">
             <% for( let x of contact_list){%>
                 <li class="contact">
-                    <p>
+                    <p style="width: 20%;">
                         <%= x.name %>
                     </p>
                     <p>
                         <%= x.phone %>
+                    </p>
+                    <p >
+                        <a href="/delete-contact/<%=x.phone%>">
+                            <i class="fas fa-user-times del-btn"></i>
+                        </a>
                     </p>
                 </li>
             <%}%>

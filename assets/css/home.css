@@ -26,6 +26,10 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
 .contact:hover{
     background-color: aqua;
+}
+.del-btn{
+    color: red;
 }
