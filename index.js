@@ -39,8 +39,21 @@ app.get('/playground',function(req,res){
 });
 
 app.post('/create_contact',function(req,res){
-    contactList.push(req.body);
-    return res.redirect('back');
+    
+    // contactList.push(req.body);
+    // return res.redirect('back');
+
+    Contact.create({
+        name: req.body.name,
+        phone: req.body.phone
+    }, function(err,newContact){
+        if(err){
+            console.log('error in creating a contact');
+            return;
+        }
+        console.log('******',newContact);
+        return res.redirect('back');
+    })
 });
 //deleting contact using string param
 app.get('/delete-contact/:phone',function(req,res){
