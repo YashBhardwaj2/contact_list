@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const port = 8000;
 
+const db = require('./config/mongoose');
+const Contact = require('./models/contact');
+
 const app = express();
 
 app.set('view engine','ejs');
@@ -44,13 +47,12 @@ app.get('/delete-contact/:phone',function(req,res){
     let phone = req.params.phone;
     let i=0;
     for(let p of contactList){
-        i++;
         if(p.phone==phone){
             break;
-        }
+        }i++;
     }
     console.log(i);
-    contactList.splice(i-1,1);
+    contactList.splice(i,1);
     return res.redirect('back');
 })
 
