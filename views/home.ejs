@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+</head>
+<body>
+    <h1>Contact List</h1>
+    <div>
+        <ul>
+            <% for( let x of contact_list){%>
+                <li>
+                    <p>
+                        <%= x.name %>
+                    </p>
+                    <p>
+                        <%= x.phone %>
+                    </p>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+    <div>
+        <form action="/create_contact" method="post">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name">
+            <label for="phone">Phone: </label>
+            <input type="text" name="phone" id="phone">
+            <button type="submit">Add Contact</button>
+        </form>
+    </div>
+
+</body>
+</html>
